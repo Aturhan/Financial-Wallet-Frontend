@@ -1,0 +1,13 @@
+<!-- Navbar -->
+<div class="navbar">
+  <a routerLink ="dashboard">{{loggedUser.name}}</a>
+  <a routerLink="account">Account</a>
+  <a routerLink="spendings">Spendings</a>
+  <a (click)="logout()">Log Out</a>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Navbar -->

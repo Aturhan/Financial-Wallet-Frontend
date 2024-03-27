@@ -1,0 +1,13 @@
+<div class="profile">
+  <div class="profile-header">
+      <img src="../../../assets/9cwge1fabhj3qhgp.jpg" alt="Profil Resmi">
+      <h1>{{ loggedUser.name }}</h1>
+      <p>{{ loggedUser.email }}</p>
+  </div>
+  <div class="profile-details">
+      <div class="amount" [ngClass]="{ 'high-amount': totalAmount > 0, 'low-amount': totalAmount < 0 }">
+          <strong>Total Amount:</strong> {{ totalAmount | currency: 'TRY': 'symbol':'1.2-2' }}
+      </div>
+      <p><strong>Account ID:</strong> {{ loggedUser.accountId }}</p>
+  </div>
+</div>

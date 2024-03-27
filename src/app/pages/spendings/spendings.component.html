@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="left-panel">
+    <h2>Create Spend</h2>
+    <form [formGroup]="createSpendForm" class="spend-form">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" formControlName="title" class="form-control">
+            <div class="invalid-feedback" *ngIf="createSpendForm.get('title').invalid && (createSpendForm.get('title').touched || createSpendForm.get('title').dirty)">
+                Title is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" formControlName="amount" class="form-control">
+            <div class="invalid-feedback" *ngIf="createSpendForm.get('amount').invalid && (createSpendForm.get('amount').touched || createSpendForm.get('amount').dirty)">
+                Amount is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="spendType">Spend Type:</label>
+            <select id="spendType" formControlName="spendType" class="form-control" required>
+                <option value="EXPENSE">EXPENSE</option>
+                <option value="INCOME">INCOME</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="createSpendForm.get('spendType').invalid && (createSpendForm.get('spendType').touched || createSpendForm.get('spendType').dirty)">
+                Spend Type is required
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+    </form>
+</div>
+
+  <div class="right-panel">
+      <h2>Spend List</h2>
+      <div *ngFor="let spend of spendList" class="spend-item" [ngClass]="{'expense': spend.spendType === 'EXPENSE', 'income': spend.spendType === 'INCOME'}">
+          <p><strong>Title:</strong> {{ spend.title }}</p>
+          <p><strong>ID:</strong> {{ spend.id }}</p>
+          <p><strong>Amount:</strong> {{ spend.amount | currency:'TRY':'symbol':'1.2-2' }}</p>
+          <p><strong>Spend Type:</strong> {{ spend.spendType }}</p>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+<div class="signup-container" id="signup-container">
+  <h2>Login</h2>
+  <form class="signup-form" [formGroup]="loginForm" >
+      <label for="email">Email:</label>
+      <input type="text" formControlName="email" name="email" >
+      <div class="text-danger" *ngIf=" loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)">
+        <span *ngIf="loginForm.controls['email'].errors?.['required']">email is required</span>
+        <span *ngIf="loginForm.controls['email'].errors?.['email']">email is invalid</span>
+        </div>
+
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password"  name="password" required>
+      <span *ngIf="loginForm.controls['password'].errors?.['required']">password is required</span>
+        <br>
+      <button type="button" (click)="onLogin()">Login</button>
+  </form>
+  <br>
+  <p class="or">
+      OR
+  </p>
+
+  <button class="register-button" > <a routerLink ="/register">Register</a></button>
+  <router-outlet></router-outlet>
+</div>

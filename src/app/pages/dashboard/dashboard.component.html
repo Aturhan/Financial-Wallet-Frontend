@@ -1,0 +1,24 @@
+
+<div class="container">
+  <h1>Exchange Rates Based On TRY</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Buying (TRY)</th>
+        <th>Selling (TRY)</th>
+        <!-- <th>Change</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let currency of currencyList">
+        <td>{{ currency.code }}</td>
+        <td>{{ currency.currencyDescription }}</td>
+        <td>{{ currency.buyingPrice }}</td>
+        <td>{{ currency.sellingPrice }}</td>
+        <!-- <td>{{ rate.change }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

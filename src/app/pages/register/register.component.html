@@ -1,0 +1,24 @@
+<div class="form-container">
+  <h2 class="form-title">Registration</h2>
+  <form id="registration-form" [formGroup]="registerForm">
+      <input type="text" formControlName="name" name="name"  placeholder="Full Name" >
+      <div class="text-danger" *ngIf=" registerForm.controls['name'].invalid && (registerForm.controls['name'].touched || registerForm.controls['name'].dirty)">
+        <span *ngIf="registerForm.controls['name'].errors?.['required']">full name is required</span>
+        <span *ngIf="registerForm.controls['name'].errors?.['minLength']">min 3 characters required</span>
+      </div>
+      <input type="email" formControlName="email" name="email" placeholder="Email" >
+      <div class="text-danger" *ngIf=" registerForm.controls['email'].invalid && (registerForm.controls['email'].touched || registerForm.controls['email'].dirty)">
+        <span *ngIf="registerForm.controls['email'].errors?.['required']">email is required</span>
+        <span *ngIf="registerForm.controls['email'].errors?.['email']">email is invalid</span></div>
+      <input type="password" formControlName="password" name="password"  placeholder="Password" >
+      <div class="text-danger" *ngIf=" registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)">
+        <span *ngIf="registerForm.controls['password'].errors?.['required']">password is required</span></div>
+
+        <input type="number" formControlName="amount" name="amount" placeholder="Amount" >
+        <div class="text-danger" *ngIf=" registerForm.controls['amount'].invalid && (registerForm.controls['amount'].touched || registerForm.controls['amount'].dirty)">
+          <span *ngIf="registerForm.controls['amount'].errors?.['amount']">amount is required</span></div>
+
+
+      <button type="button" (click)="onRegister()">Register</button>
+  </form>
+</div>

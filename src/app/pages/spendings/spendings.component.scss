@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.left-panel, .right-panel {
+  width: 45%;
+}
+
+.spend-form {
+  max-width: 400px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+.left-panel h2, .right-panel h2 {
+  text-align: center;
+}
+
+.right-panel .spend-item {
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.right-panel .spend-item.expense {
+  border-left: 5px solid red;
+}
+
+.right-panel .spend-item.income {
+  border-left: 5px solid green;
+}
+
+.spend-item p {
+  margin: 5px 0;
+}
