@@ -1,6 +1,6 @@
 ## Description
  It is the frontend part of the foreign exchange tracking and financial wallet application
- - Click to reach the simple frontend https://github.com/Aturhan/Financial-Wallet-Backend
+ - Click to reach the backend https://github.com/Aturhan/Financial-Wallet-Backend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
