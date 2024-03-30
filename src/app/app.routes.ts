@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AccountComponent } from './pages/account/account.component';
 import { SpendingsComponent } from './pages/spendings/spendings.component';
 import { authGuard } from './services/auth.guard';
+import { AddSpendingComponent } from './pages/add-spending/add-spending.component';
 
 export const routes: Routes = [
 
@@ -41,6 +42,10 @@ export const routes: Routes = [
       {
         path: 'spendings',
         component: SpendingsComponent
+      },
+      {
+        path:  'add-spending',
+        component: AddSpendingComponent
       }
     ]
   }

@@ -1,4 +1,5 @@
-# CurrencyFrontend
+## Description
+ It is the frontend part of the foreign exchange tracking and financial wallet application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 

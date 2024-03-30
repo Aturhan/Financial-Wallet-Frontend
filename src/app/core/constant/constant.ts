@@ -8,8 +8,9 @@ export const Constant = {
 
   },
   API_ENDPOINT_SPENDINGS: {
-    GET_ALL: '/all/',
-    SAVE:'/save'
+    GET_ALL: '/all',
+    SAVE:'/save',
+    DELETE:'/delete/',
 
   },
   API_ENDPOINT_ACCOUNT: {

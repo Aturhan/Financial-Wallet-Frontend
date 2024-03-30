@@ -97,3 +97,8 @@ export class SpendDto {
   spendType:string
 
 }
+
+export interface CustomResponse{
+  result:boolean
+  message:string
+}

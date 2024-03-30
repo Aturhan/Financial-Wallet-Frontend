@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { SpendingsService } from '../../services/spendings.service';
 import { LoggedUser } from '../../../../../task-management-FE/src/app/core/model/api.model';
-import { CreateSpendingReq, SpendDto, CreateSpendRes } from '../../core/model/api.model';
-import { CommonModule, CurrencyPipe, NgClass } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {  SpendDto, CustomResponse } from '../../core/model/api.model';
+import { CommonModule, CurrencyPipe, NgClass, NgForOf } from '@angular/common';
+import {  ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-spendings',
   standalone: true,
-  imports: [NgClass,CommonModule,ReactiveFormsModule,CurrencyPipe],
+  imports: [NgClass,CommonModule,ReactiveFormsModule,CurrencyPipe,NgForOf],
   templateUrl: './spendings.component.html',
   styleUrl: './spendings.component.scss'
 })
 export class SpendingsComponent {
   loggedUser:LoggedUser
   spendList: SpendDto[]
-  createSpendingReq:CreateSpendingReq = new CreateSpendingReq()
+  totalPages: number
+  currentPage: number = 0
+  pageSize: number = 5
   constructor(private spendService:SpendingsService){
       const userData =  localStorage.getItem('user_data')
       if(userData != null){
@@ -23,20 +25,28 @@ export class SpendingsComponent {
       }
     }
 
+    ngOnInit(): void {
+      this.getAllSpends();
+    }
 
-    createSpendForm: FormGroup = new FormGroup({
-      title: new FormControl("",[Validators.required]),
-      spendType: new FormControl(""),
-      amount: new FormControl("",[Validators.required])
-    })
+    getAllSpends(){
+        this.spendService.getAllSpends(this.loggedUser.accountId,this.currentPage,this.pageSize).subscribe(response =>{
+          this.spendList = response.content
+          this.totalPages = response.totalPages
+        })
+    }
 
-    onSave(){
-        this.createSpendingReq.title = this.createSpendForm.get("title").value
-        this.createSpendingReq.spendType = this.createSpendForm.get("spendType").value
-        this.createSpendingReq.accountId = this.loggedUser.accountId
-        this.createSpendingReq.amount = this.createSpendForm.get("amount").value
+    onPageChange(page: number): void {
+      this.currentPage = page;
+      this.getAllSpends();
+    }
 
-        this.spendService.save(this.createSpendingReq).subscribe((res:CreateSpendRes) =>{
+    createPageArray(): any[] {
+      return Array(this.totalPages).fill(0).map((x, i) => i + 1);
+    }
+
+    deleteSpend(id:string){
+        this.spendService.delete(id).subscribe((res:CustomResponse) => {
           if(res.result){
             alert(res.message)
             this.getAllSpends()
@@ -44,18 +54,8 @@ export class SpendingsComponent {
             alert(res.message)
           }
         })
+
     }
 
 
-
-
-    ngOnInit(): void {
-      this.getAllSpends();
-    }
-
-    getAllSpends(){
-        this.spendService.getAllSpends(this.loggedUser.accountId).subscribe((response:any) =>{
-          this.spendList = response
-        })
-    }
 }
